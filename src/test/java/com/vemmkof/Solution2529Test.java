@@ -44,24 +44,24 @@ class Solution2529Test {
     @ParameterizedTest
     @MethodSource("getNegativeCases")
     void isCorrect_shouldHandleNegativeCases(int[] nums, int expectedCount) {
-        assertEquals(solution.maximumCount(nums), expectedCount);
+        assertEquals(expectedCount, solution.maximumCount(nums));
     }
 
     @ParameterizedTest
     @MethodSource("getPositiveCases")
     void isCorrect_shouldHandlePositiveCases(int[] nums, int expectedCount) {
-        assertEquals(solution.maximumCount(nums), expectedCount);
+        assertEquals(expectedCount, solution.maximumCount(nums));
     }
 
     @ParameterizedTest
     @MethodSource("getZeroCases")
     void isCorrect_shouldHandleZeroCases(int[] nums, int expectedCount) {
-        assertEquals(solution.maximumCount(nums), expectedCount);
+        assertEquals(expectedCount, solution.maximumCount(nums));
     }
 
     @ParameterizedTest
     @MethodSource("getMixedCases")
     void isCorrect_shouldHandleMixedCases(int[] nums, int expectedCount) {
-        assertEquals(solution.maximumCount(nums), expectedCount);
+        assertEquals(expectedCount, solution.maximumCount(nums));
     }
 }
