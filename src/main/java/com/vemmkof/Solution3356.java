@@ -2,27 +2,28 @@ package com.vemmkof;
 
 public class Solution3356 {
     public int minZeroArray(int[] nums, int[][] queries) {
-        int length = queries.length;
-        int i = 0;
-        int k = 0;
-        while (!isZeroArray(nums) && i < length) {
-            // decrement wisely
-            int l = queries[i][0];
-            int r = queries[i][1];
-            int val = queries[i][2];
-            for (int j = l; j <= r; j++) {
-                nums[j] = Math.max(0, nums[j] - val);
-            }
-            k++;
-            i++;
-        }
-        return isZeroArray(nums) ? k : -1;
-    }
+        int n = nums.length;
+        int sum = 0, k = 0;
+        int[] diffArray = new int[n + 1];
 
-    private boolean isZeroArray(int[] nums) {
-        for (int num : nums) {
-            if (num != 0) return false;
+        for (int i = 0; i < n; i++) {
+            while (sum + diffArray[i] < nums[i]) {
+                k++;
+                if (k > queries.length) return -1;
+
+                int left = queries[k - 1][0];
+                int right = queries[k - 1][1];
+                int value = queries[k - 1][2];
+
+                if (right >= i) {
+                    diffArray[Math.max(left, i)] += value;
+                    if (right + 1 < diffArray.length) {
+                        diffArray[right + 1] -= value;
+                    }
+                }
+            }
+            sum += diffArray[i];
         }
-        return true;
+        return k;
     }
 }
