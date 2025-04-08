@@ -12,7 +12,8 @@ public class Solution2529 {
         if (nums[0] > 0 && nums[length - 1] > 0)
             return length; // no negatives
 
-        int low = 0, high = nums.length - 1;
+        int low = 0;
+        int high = nums.length - 1;
         int firstNonNegative = nums.length; // default to the length of the array
 
         while (low <= high) {
